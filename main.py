@@ -73,8 +73,7 @@ t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
 
-st.write(f"Final velocity: {v[-1]:.2f} m/s")
-st.write(f"Final position: {X[-1]:.2f} m")
+
 
 c1, c2 = st.columns(2)
 c1.metric("Final velocity", f"{v[-1]:.2f} m/s")
