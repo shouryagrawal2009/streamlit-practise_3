@@ -63,6 +63,7 @@ def stepper(label, min_v, max_v, default, key):
   
 
 st.title("Kinematics Visualizer")
+st.latex(r"v = u + at \qquad x=ut + \frac{1}{2}at^2")
 
 u=stepper("Initial velocity (m/s)",0,50, 20,"u")
 a=stepper("Acceleartion (m/s2)",0, 20, 10,"a")
@@ -71,6 +72,13 @@ T=stepper("Total time (s)", 1, 30, 10,"T")
 t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
+
+st.write(f"Final velocity: {v[-1]:.2f} m/s")
+st.write(f"Final position: {X[-1]:.2f} m")
+
+c1, c2 = st.columns(2)
+c1.metric("Final velocity", f"{v[-1]:.2f} m/s")
+c1.metric("Final position", f"{X[-1]:.2f} m")
 
 fig= go.Figure(go.Scatter(x=t, y=v, mode="lines"))
 fig.update_layout(title="Velocity vs Time", xaxis_title="Time(s)",yaxis_title="Velocity (m/s)", template="plotly_white")
@@ -85,3 +93,4 @@ with tab1:
   st.plotly_chart(fig, use_container_width=True)
 with tab2:
   st.plotly_chart(fig2, use_container_width=True)
+
