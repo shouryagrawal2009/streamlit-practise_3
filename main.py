@@ -90,8 +90,8 @@ fig2= go.Figure(go.Scatter(x=t, y=X, mode="lines"))
 fig2.update_layout(title="Position vs Time", xaxis_title="Time(s)",yaxis_title="Position(m)", template="plotly_white")
 fig2.update_traces(line_color="#E8590C", line_width=3)
 
-fig.add_trace(go.Scatter(x=[t_at_max], y=[v_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
-fig2.add_trace(go.Scatter(x=[t_at_max_v], y=[x_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
+fig.add_trace(go.Scatter(x=[t_at_max_v], y=[v_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
+fig2.add_trace(go.Scatter(x=[t_at_max], y=[x_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
 
 tab1, tab2 = st.tabs(["Velocity-Time", "Position-Time"])
 with tab1:
