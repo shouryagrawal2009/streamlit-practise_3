@@ -93,7 +93,7 @@ fig2.update_traces(line_color="#E8590C", line_width=3)
 fig.add_trace(go.Scatter(x=[t_at_max_v], y=[v_max], mode="markers", marker=dict(size=12, color="blue"), name=  "Peak"))
 fig2.add_trace(go.Scatter(x=[t_at_max], y=[x_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
 
-fig.add_annotation(x=t_at_max_v, y= v_max, text=f"Peak: {x_max:.1f} m", showarrow=True, arrowhead=2)
+fig.add_annotation(x=t_at_max_v, y= v_max, text=f"Peak: {v_max:.1f} m/s", showarrow=True, arrowhead=2)
 fig2.add_annotation(x=t_at_max, y= x_max, text=f"Peak: {x_max:.1f} m", showarrow=True, arrowhead=2)
 
 tab1, tab2 = st.tabs(["Velocity-Time", "Position-Time"])
