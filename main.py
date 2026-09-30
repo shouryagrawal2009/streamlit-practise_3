@@ -81,6 +81,8 @@ t_at_max_v = t[np.argmax(v)]
 c1, c2 = st.columns(2)
 c1.metric("Final velocity", f"{v[-1]:.2f} m/s")
 c1.metric("Final position", f"{X[-1]:.2f} m")
+c3 = st.columns(1)[0]
+c3.matric("Peak position", f"{x_max:.2f} m", f"at t= {t_at_max:.2f}s")
 
 fig= go.Figure(go.Scatter(x=t, y=v, mode="lines"))
 fig.update_layout(title="Velocity vs Time", xaxis_title="Time(s)",yaxis_title="Velocity (m/s)", template="plotly_white")
