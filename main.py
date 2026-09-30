@@ -93,6 +93,8 @@ fig2.update_traces(line_color="#E8590C", line_width=3)
 fig.add_trace(go.Scatter(x=[t_at_max_v], y=[v_max], mode="markers", marker=dict(size=12, color="blue"), name=  "Peak"))
 fig2.add_trace(go.Scatter(x=[t_at_max], y=[x_max], mode="markers", marker=dict(size=12, color="red"), name=  "Peak"))
 
+fig2.add_annotation(x=t_at_max, y= x_max, text=f"Peak: {x_max:.1f} m", showarrow= True, arroehead=2)
+
 tab1, tab2 = st.tabs(["Velocity-Time", "Position-Time"])
 with tab1:
   st.plotly_chart(fig, use_container_width=True)
