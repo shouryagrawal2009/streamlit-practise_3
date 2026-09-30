@@ -73,7 +73,7 @@ t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
 
-v-max= np.max(v)
+v_max= np.max(v)
 x_max = np.max(X)
 t_at_max= t[np.argmax(X)]
 
