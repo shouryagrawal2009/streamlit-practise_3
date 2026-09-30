@@ -66,14 +66,15 @@ st.title("Kinematics Visualizer")
 st.latex(r"v = u + at \qquad x=ut + \frac{1}{2}at^2")
 
 u=stepper("Initial velocity (m/s)",0,50, 20,"u")
-a=stepper("Acceleartion (m/s2)",0, 20, 10,"a")
+a=stepper("Acceleartion (m/s2)",-10, 20, 10,"a")
 T=stepper("Total time (s)", 1, 30, 10,"T")
 
 t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
 
-
+x_max = np.max(X)
+t_at_max= t[np.argmax(X)]
 
 c1, c2 = st.columns(2)
 c1.metric("Final velocity", f"{v[-1]:.2f} m/s")
