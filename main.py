@@ -73,8 +73,8 @@ t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
 
-x_max = np.max(x)
-t_at_max= t[np.argmax(x)]
+x_max = np.max(X)
+t_at_max= t[np.argmax(X)]
 
 c1, c2 = st.columns(2)
 c1.metric("Final velocity", f"{v[-1]:.2f} m/s")
