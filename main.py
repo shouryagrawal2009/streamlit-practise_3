@@ -1,6 +1,9 @@
 import numpy as np
 import streamlit as st
 import plotly.graph_objects as go
+from google import genai
+
+client= genai.Client(api_key=st.secrets["GEMINI_API_KEY])
 
 st.set_page_config(page_title="kinematics visualiser", page_icon="A", layout="wide")
 
@@ -115,7 +118,25 @@ st.subheader("Ask about this motion")
 user_q = st.chat_input("Ask a question...")
 if user_q:
   st.chat_message("user").write(user_q)
-  st.chat_message("assistant").write("(Gemini will answer here soon)")
+
+  context = (
+    f"Initial velocity: {u} m/s, acceleration: {a} m/s^2,"
+    f"over {T} seconds. Final velocity: {v[-1]:.2f} m/s,"
+    f"final position: {x[-1]:.2f} m."
+  )
+  response= client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=f"You are a physics tutor. Context:{context}\n\nQuestion: {user_q}"
+  )
+  st.chat_message("assistant").write(response.text)
+
+
+
+
+
+
+
+
 
 
 
