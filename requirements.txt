@@ -1,4 +1,4 @@
 streamlit
 plotly
 numpy
-google-genai
+google-genai>=2.20.0
