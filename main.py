@@ -65,17 +65,22 @@ def stepper(label, min_v, max_v, default, key):
 st.title("Kinematics Visualizer")
 st.latex(r"v = u + at \qquad x=ut + \frac{1}{2}at^2")
 
+# --- User input ---
 u=stepper("Initial velocity (m/s)",0,50, 20,"u")
 a=stepper("Acceleartion (m/s2)",-10, 20, 10,"a")
 T=stepper("Total time (s)", 1, 30, 10,"T")
 
+# --- Physics calculation ---
 t= np.linspace(0, T, 200)
 v= u+ a*t
 X= u*t + 0.5*a*t**2
 
-v_max= np.max(v)
-x_max = np.max(X)
+# --- Peak position ---
+x_max = np.max(X)  # highest point reached
 t_at_max= t[np.argmax(X)]
+
+# --- Peak velocity ---
+v_max= np.max(v)
 t_at_max_v = t[np.argmax(v)]
 
 c1, c2 = st.columns(2)
@@ -85,12 +90,13 @@ c3 = st.columns(1)[0]
 c3.metric("Peak position", f"{x_max:.2f} m", f"at t= {t_at_max:.2f}s")
 c3.metric("Peak velocity", f"{v_max:.2f} m/s", f"at t= {t_at_max_v:.2f}s")
 
+# --- Graphs ---
 fig= go.Figure(go.Scatter(x=t, y=v, mode="lines"))
-fig.update_layout(title="Velocity vs Time", xaxis_title="Time(s)",yaxis_title="Velocity (m/s)", template="plotly_white")
+fig.update_layout(title="Velocity vs Time", xaxis_title="Time(s)", yaxis_title="Velocity (m/s)", template="plotly_white")
 fig.update_traces(line_color="#3B5BDB", line_width=3)
 
 fig2= go.Figure(go.Scatter(x=t, y=X, mode="lines"))
-fig2.update_layout(title="Position vs Time", xaxis_title="Time(s)",yaxis_title="Position(m)", template="plotly_white")
+fig2.update_layout(title="Position vs Time", xaxis_title="Time(s)", yaxis_title="Position(m)", template="plotly_white")
 fig2.update_traces(line_color="#E8590C", line_width=3)
 
 fig.add_trace(go.Scatter(x=[t_at_max_v], y=[v_max], mode="markers", marker=dict(size=12, color="blue"), name=  "Peak"))
