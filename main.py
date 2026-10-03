@@ -2,6 +2,8 @@ import numpy as np
 import streamlit as st
 import plotly.graph_objects as go
 
+st.write("key loaded:", "GEMINI_API_KEY" in  st.secrets)
+
 st.set_page_config(page_title="kinematics visualiser", page_icon="A", layout="wide")
 
 st.markdown("""
