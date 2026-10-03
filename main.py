@@ -111,3 +111,11 @@ with tab1:
 with tab2:
   st.plotly_chart(fig2, use_container_width=True)
 
+st.subheader("Ask about this motion")
+user_q = st.chat_input("Ask a question...")
+if user_q:
+  st.chat_message("user").write(user_q)
+  st.chat_message("assistant").write("(Gemini will answer here soon)")
+
+
+
