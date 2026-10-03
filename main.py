@@ -5,6 +5,8 @@ from google import genai
 
 client= genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
 
+st.write("Key starts with:", st.secrets["GEMINI_API_KEY"][:4])
+
 st.set_page_config(page_title="kinematics visualiser", page_icon="A", layout="wide")
 
 st.markdown("""
