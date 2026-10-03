@@ -122,7 +122,7 @@ if user_q:
   context = (
     f"Initial velocity: {u} m/s, acceleration: {a} m/s^2,"
     f"over {T} seconds. Final velocity: {v[-1]:.2f} m/s,"
-    f"final position: {x[-1]:.2f} m."
+    f"final position: {X[-1]:.2f} m."
   )
   response= client.models.generate_content(
     model="gemini-2.5-flash",
